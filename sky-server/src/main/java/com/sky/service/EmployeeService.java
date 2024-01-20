@@ -18,4 +18,6 @@ public interface EmployeeService {
     Employee login(EmployeeLoginDTO employeeLoginDTO);
 
     PageResult search(EmployeePageQueryDTO employeePageQueryDTO);
+
+    void status(Integer status, Long id);
 }

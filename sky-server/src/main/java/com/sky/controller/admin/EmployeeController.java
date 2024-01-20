@@ -86,6 +86,11 @@ public class EmployeeController {
         return Result.success();
     }
 
+    /**
+     * 分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
     @GetMapping("/page")
     @ApiOperation("分页查询")
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
@@ -93,5 +98,13 @@ public class EmployeeController {
         log.info("分页查询:{}",employeePageQueryDTO);
         PageResult result=employeeService.search(employeePageQueryDTO);
         return Result.success(result);
+    }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("状态修改")
+    public Result status(@PathVariable Integer status,Long id){
+        log.info("状态为:{},id:{}",status,id);
+        employeeService.status(status,id);
+        return Result.success();
     }
 }

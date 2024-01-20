@@ -35,13 +35,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 新增员工
+     *
      * @param employeeDTO
      */
     @Override
     public void insert(EmployeeDTO employeeDTO) {
-        Employee employee=new Employee();
+        Employee employee = new Employee();
         //快速拷贝
-        BeanUtils.copyProperties(employeeDTO,employee);
+        BeanUtils.copyProperties(employeeDTO, employee);
         //设置创建时间
         employee.setCreateTime(LocalDateTime.now());
         //更新时间
@@ -52,7 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         //更改人id
         employee.setUpdateUser(BaseContext.getCurrentId());
         //设置密码
-        employee.setPassword(PasswordConstant.DEFAULT_PASSWORD);
+        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
         //设置状态
         employee.setStatus(StatusConstant.ENABLE);
         employee.setId(null);
@@ -104,13 +105,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public PageResult search(EmployeePageQueryDTO employeePageQueryDTO) {
 
-        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
-        Page<Employee> page=employeeMapper.search(employeePageQueryDTO);
+        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
+        Page<Employee> page = employeeMapper.search(employeePageQueryDTO);
 
         long total = page.getTotal();
         List<Employee> result = page.getResult();
 
-        return new PageResult(total,result);
+        return new PageResult(total, result);
+    }
+
+    @Override
+    public void status(Integer status, Long id) {
+        Employee employee = Employee.builder().
+                status(status).
+                id(id).build();
+        employeeMapper.update(employee);
     }
 
 }
