@@ -22,7 +22,7 @@ public class CategoryController {
 
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
 
     @GetMapping("/page")
     @ApiOperation("分类分页查询")

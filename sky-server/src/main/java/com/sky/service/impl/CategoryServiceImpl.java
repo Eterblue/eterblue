@@ -19,7 +19,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,11 +26,11 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    CategoryMapper categoryMapper;
+    private CategoryMapper categoryMapper;
     @Autowired
-    DishMapper dishMapper;
+    private DishMapper dishMapper;
     @Autowired
-    SetmealMapper setmealMapper;
+    private SetmealMapper setmealMapper;
 
     @Override
     public PageResult page(CategoryPageQueryDTO categoryPageQueryDTO) {
