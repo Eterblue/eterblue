@@ -124,6 +124,6 @@ public class EmployeeController {
         log.info("修改员工信息:{}",employeeDTO);
         employeeService.update(employeeDTO);
 
-        return Result.success(employeeDTO);
+        return Result.success();
     }
 }
