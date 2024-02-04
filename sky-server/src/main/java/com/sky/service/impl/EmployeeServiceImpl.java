@@ -44,14 +44,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         //快速拷贝
         BeanUtils.copyProperties(employeeDTO, employee);
         //设置创建时间
-        employee.setCreateTime(LocalDateTime.now());
+       /* employee.setCreateTime(LocalDateTime.now());
         //更新时间
         employee.setUpdateTime(LocalDateTime.now());
         //设置创建人id
         //将线程变量中id取出
         employee.setCreateUser(BaseContext.getCurrentId());
         //更改人id
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        employee.setUpdateUser(BaseContext.getCurrentId());*/
         //设置密码
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
         //设置状态
@@ -136,11 +136,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         BeanUtils.copyProperties(employeeDTO, employee);
 
         //更新时间
-        employee.setUpdateTime(LocalDateTime.now());
+       /* employee.setUpdateTime(LocalDateTime.now());
         //设置创建人id
 
         //更改人id
-        employee.setUpdateUser(BaseContext.getCurrentId());
+        employee.setUpdateUser(BaseContext.getCurrentId());*/
 
 
         employeeMapper.update(employee);
