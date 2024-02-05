@@ -52,7 +52,7 @@ public class CategoryController {
 
     @DeleteMapping
     @ApiOperation("删除分类")
-    public Result delete(Integer id){
+    public Result delete(Long id){
         log.info("删除分类，id为:{}",id);
         categoryService.delete(id);
         return Result.success();

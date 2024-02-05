@@ -21,7 +21,7 @@ public interface CategoryMapper {
     @AutoFill(value = OperationType.INSERT)
     void insert(Category category);
 
-    void delete(Integer id);
+    void delete(Long id);
 
     @AutoFill(value = OperationType.UPDATE)
     void update(Category category);
