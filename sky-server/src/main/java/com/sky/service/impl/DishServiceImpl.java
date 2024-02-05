@@ -137,11 +137,11 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public Dish getByCategoryId(Long categoryId) {
+    public List<Dish> getByCategoryId(Long categoryId) {
         Dish dish= Dish.builder()
                 .categoryId(categoryId)
+                .status(StatusConstant.ENABLE)
                 .build();
-        dishMapper.getByCategoryId(categoryId);
-        return dish;
+        return dishMapper.getByCategoryId(dish);
     }
 }

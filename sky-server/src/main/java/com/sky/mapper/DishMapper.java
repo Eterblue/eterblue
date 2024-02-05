@@ -26,5 +26,5 @@ public interface DishMapper {
 
     void delete(List<Long> ids);
 
-    Dish getByCategoryId(Long categoryId);
+    List<Dish> getByCategoryId(Dish dish);
 }
