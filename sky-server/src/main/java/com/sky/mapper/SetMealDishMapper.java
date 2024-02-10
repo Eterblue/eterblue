@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.entity.Setmeal;
 import com.sky.entity.SetmealDish;
+import com.sky.vo.DishItemVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface SetMealDishMapper {
     void delete(List<Long> ids);
 
     List<SetmealDish> getBySetMealId(Long id);
+
+    List<DishItemVO> getDishItemVO(Long id);
 }

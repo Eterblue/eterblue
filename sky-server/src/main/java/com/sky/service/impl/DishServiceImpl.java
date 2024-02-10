@@ -144,4 +144,24 @@ public class DishServiceImpl implements DishService {
                 .build();
         return dishMapper.getByCategoryId(dish);
     }
+
+    @Override
+    public List<DishVO> listWithFlavor(Dish dish) {
+
+        List<Dish> dishes = dishMapper.getByCategoryId(dish);
+        List<DishVO> dishVOS=new ArrayList<>();
+
+        dishes.stream().forEach(dish1 -> {
+            DishVO dishVO=new DishVO();
+            BeanUtils.copyProperties(dish1,dishVO);
+
+            List<DishFlavor> list = dishFlavorMapper.dishById(dish1.getId());
+            dishVO.setFlavors(list);
+
+            dishVOS.add(dishVO);
+        });
+
+        return dishVOS;
+    }
+
 }
